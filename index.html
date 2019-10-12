@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+	<meta charset="utf-8">
+	<title>Kvad-Rov2</title>
+</head>
+<body>
+	<h1>ax&sup2;+bx+c=0</h1>
+
+	<script type="text/javascript">
+		function vypocti(){
+			var hodkvad_clen = parseFloat(document.forms['formular'].elements['kvad_clen'].value);
+			var hodabs_clen = parseFloat(document.forms['formular'].elements['abs_clen'].value);
+			var hodlin_clen = parseFloat(document.forms['formular'].elements['lin_clen'].value);
+
+			function kvad(a,b,c){
+				var dis = Math.pow(b, 2) - (4 * a * c);
+
+				if (dis<0) {	//Kvad. rov. má 2 KOMPLEXNĚ SDRUŽENÉ KOŘENY
+					var real = (- 1 * b) / (2 * a);
+					var komp = Math.sqrt(Math.abs(dis))/(2 * a);
+
+					return "KOMPLEXNĚ SDRUŽENÝ KOŘEN - x1,2: "+real+"±"+komp+"i"
+				}
+				
+				if (dis===0) {	//Kvad. rov. má JEDEN DVOJNÁSOBNÝ KOŘEN
+					var vysledek1 = (- 1 * b) / (2 * a);
+						
+					return "DVOJNÁSOBNÝ KOŘEN - x1,2: " + vysledek1
+				}
+				 
+				if (dis>0) {	//Kvad. rov. má 2 RŮZNÉ REÁLNÉ KOŘENY
+					var vysledek1 = (-1 * b + Math.sqrt(dis)) / (2 * a);
+					var vysledek2 = (-1 * b - Math.sqrt(dis)) / (2 * a);
+
+					return "x1: " + vysledek1 + "; x2: " + vysledek2
+				}
+			}
+
+			alert(kvad(hodkvad_clen,hodabs_clen,hodlin_clen));
+
+		}
+	</script>
+
+	<form id="formular">
+		Zadejte koeficient "a" (kvadratický člen): <input type="text" id="kvad_clen"> <br>
+		Zadejte koeficient "b" (absolutní člen): <input type="text" id="abs_clen"> <br>
+		Zadejte koeficient "c" (lineární člen): <input type="text" id="lin_clen"> <br>
+		<input type="button" value="Vypočti neznámou x!" onclick="vypocti();">
+	</form>
+</body>
+</html>
