@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <title>BMI Kalkulačka | Drábek</title>
+    <link rel="shortcut icon" type="image/png" href="favicon2.png"/>         <!--ikona kalkulačky v záložce-->
+    <link rel="stylesheet" type="text/css" href="styles2.css">
+    <script type="text/javascript">
+        function presmerovani () {
+            window.location.href = "index.html";
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <h1 id="top">Nějaká chyba?</h1>
+    <p class="podtrzeni"></p>
+</header>
+
+
+<section id="text">
+    <p class="odstavec">Kód je napsán čistě v JavaScriptu.</p>
+
+    <p class="odstavec">Pokud se něco pokazilo, zkontrolujte, jestli jste do políček zadali skutečně pouze číslo a jestli například před ním či za ním není mezera.</p>
+
+    <p class="odstavec">Program umí řešit pouze kvadratické rovnice. Pokud by tedy například šlo o lineární rovnici, program se pokusí dělit nulou. Jelikož to nelze, výsledkem může být 
+    například "Infinity" případně "NaN".</p>
+
+    <p><form><input type="button" class="tlacitko" value="Zpět na kalkulačku." onclick="presmerovani();"></form></p>
+
+</section>
+
+<br>
+
+<footer id="zapati">
+
+</footer>
+
+</body>
+</html>

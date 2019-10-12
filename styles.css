@@ -1,0 +1,120 @@
+body {
+	background: url(background.jpg);
+	margin: 0;
+}
+
+table {
+	width: 530px;
+}
+
+.popisky {
+	font-size: 55%;
+	font-weight: normal;
+	padding-left: 10px;
+	font-style: italic;
+}
+
+.udaje {
+	padding: 10px;
+}
+
+.tlacitko {
+	background-color: #A6C668;
+	font-size: 100%;
+	font-weight: bold;
+	color: white;
+	border-radius: 20px;
+	cursor: pointer;
+	border: 0px;
+}
+
+.tlacitko:hover {
+	background-color: white;
+	color: #A6C668;
+	font-size: 125%;
+}
+
+* {														/*hvězdička oznašuje aplikování na všechny elementy*/
+
+}
+
+#nadpis {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	background-color: #B9DC74;
+	color: white;
+	border: 10px solid #A6C668;
+	width: 550px;
+	text-decoration: underline;
+	font-size: 350%;
+	font-weight: bold;
+	position: relative;
+}
+
+#blok1 {
+	width: 550px;
+	height: 60px;
+	position: absolute;
+	top: 15%;
+	left: 50%;
+	background: #B9DC74;
+	border: 10px solid #A6C668;
+	margin-bottom: 0px;
+	transform: translate(-50%);
+	color: white;
+	text-align: center;
+	font-size: 300%;
+	font-weight: bold;
+}
+
+#blok2 {
+	width: 550px;
+	height: 420px;
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	background: #B9DC74;
+	border: 10px solid #A6C668;
+	border-top: 0px;
+	border-bottom: 0px;
+	transform: translate(-50%);
+	text-align: left;
+	font-size: 80%;
+}
+
+#blok3 {
+	width: 550px;
+	height: 120px;
+	position: absolute;
+	top: 800%;
+	left: 50%;
+	background: #B9DC74;
+	border: 10px solid #A6C668;
+	border-top: 0px;
+	transform: translate(-50%);
+	font-size: 50%;
+}
+
+#vysledek {
+	text-decoration: underline;
+}
+
+#komentar {
+	text-decoration: none;
+	font-style: italic;
+}
+
+#zapati {
+	position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -100%);												/*(x,y)*/
+    background: #B9DC74;
+    color: white;
+	border: 10px solid #A6C668;
+	font-size: 150%;
+	font-weight: bold;
+	width: 550px;
+	text-align: center;
+}
