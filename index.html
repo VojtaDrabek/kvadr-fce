@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+	<meta charset="utf-8">
+	<title>Kvadratická funkce | V.D.</title>
+	<link rel="shortcut icon" type="image/png" href="favicon.png"/>			<!--ikona kalkulačky v záložce-->
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script type="text/javascript">
+		//var rok_datum = new Date();
+		//var rok = rok_datum.getFullYear();
+
+		/*function zaokrouhlit (cislo, presnost) {
+			var x = Math.pow(10, presnost);
+			return Math.round(cislo * x) / x;	//Math.round(cislo*x) --> vyjde cislo zaokrouhleno na 0 desetin --> vydělíme tím, čím jsme prve vynásobili --> máme číslo zaokrouhleno na 1 desetinné místo
+		}
+
+		function kondice (a) {
+			if (a<18.5) {return "Máte podváhu."}
+			if (a>=18.5 && a<=25) {return "Vaše hmotnost je normální."}
+			if (a>25 && a<=30) {return "Máte nadváhu."}
+			if (a>30 && a<=40) {return "Trpíte obezitou."}
+			if (a>40) {return "Trpíte morbidní obezitou."}
+		}*/
+
+		function bmi () {
+			var kvad_clen = document.forms['formular'].elements['a'].value;
+			var lin_clen = document.forms['formular'].elements['b'].value;
+			var abs_clen = document.forms['formular'].elements['c'].value;
+
+			/*Jméno a příjmení - KONTROLA + INICIÁLY
+				var jmenoprijmeni_spravne = /([A-ZÁČĎÉÍŇÓŘŠŤÚÝŽ]{1})[a-záčďéěíňóřšťúůýž]+\h?/g;
+				var inicialy = /[A-ZÁČĎÉÍŇÓŘŠŤÚÝŽ]{1}/g;
+				var test_jmeno = jmeno.match(jmenoprijmeni_spravne);
+				var test_prijmeni = prijmeni.match(jmenoprijmeni_spravne);
+				var inicialy_vystup = jmeno.match(inicialy)+". "+prijmeni.match(inicialy)+".";			//výstup iniciálů
+				if (jmeno!=test_jmeno || prijmeni!=test_prijmeni) {alert("Špatné údaje"); return};
+			*/
+
+			//Váha a výška - ÚPRAVA DESETINÉ ČÁRKY / TEČKY
+			//	if (vaha<=0) {alert("Špatně zadaná váha."); return}
+			//	if (vyska<=0) {alert("Špatně zadaná výška."); return}
+				var prevod_tecka = /^(\d+)[,.]?(\d+)?/g;
+				var kvad_clen_spravne = parseFloat(kvad_clen.replace(prevod_tecka, '$1.$2'));									//to, čím nahrazuju vždy v ''
+				var lin_clen_spravne = parseFloat(lin_clen.replace(prevod_tecka, '$1.$2'));
+				var abs_clen_spravne = parseFloat(abs_clen.replace(prevod_tecka, '$1.$2'));
+			//	var bmi_hodnota = zaokrouhlit(vaha_spravne/((vyska_spravne/100)*(vyska_spravne/100)),1);	//jednička na konci určuje na kolik desetinných míst zaokrouhlit
+			//	document.getElementById('vysledek').innerHTML = inicialy_vystup+" má index BMI "+bmi_hodnota;
+			//	document.getElementById('komentar').innerHTML = kondice(bmi_hodnota); //výsledek fce do divu	
+			document.getElementById('vysledek').innerHTML = "Výsledek:";
+			document.getElementById('komentar').innerHTML = kvad(kvad_clen_spravne,lin_clen_spravne,abs_clen_spravne);	
+		}
+
+		function presmerovani () {
+			window.location.href = "strana2.html";
+		}
+
+		function kvad(a,b,c){
+				var dis = Math.pow(b, 2) - (4 * a * c);
+
+				if (dis<0) {	//Kvad. rov. má 2 KOMPLEXNĚ SDRUŽENÉ KOŘENY
+					var real = (- 1 * b) / (2 * a);
+					var komp = Math.sqrt(Math.abs(dis))/(2 * a);
+
+					return "KOMPLEXNĚ SDRUŽENÝ KOŘEN - x1,2: "+real+"±"+komp+"i"
+				}
+				
+				if (dis===0) {	//Kvad. rov. má JEDEN DVOJNÁSOBNÝ KOŘEN
+					var vysledek1 = (- 1 * b) / (2 * a);
+						
+					return "DVOJNÁSOBNÝ KOŘEN - x1,2: " + vysledek1
+				}
+				 
+				if (dis>0) {	//Kvad. rov. má 2 RŮZNÉ REÁLNÉ KOŘENY
+					var vysledek1 = (-1 * b + Math.sqrt(dis)) / (2 * a);
+					var vysledek2 = (-1 * b - Math.sqrt(dis)) / (2 * a);
+
+					return "x1: " + vysledek1 + "; x2: " + vysledek2
+				}
+		}
+
+
+
+	</script>
+</head>
+<body>
+		<!--<div id="nadpis">Kvadratická funkce</div>-->
+		<div id="blok1">
+			ax&sup2;+bx+c=0
+		<div id="blok2">
+			<form id="formular">
+				<table>
+					<tr>
+						<td><div class="udaje">a:</div></td>		<!--sup - hvězdička do h. indexu-->
+						<td align="right"><input type="text" class="udaje" id="a"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="popisky"></td>
+					</tr>
+					<tr>
+						<td><div class="udaje">b:</div></td>
+						<td align="right"><input type="text" class="udaje" id="b"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="popisky"></td>
+					</tr>
+					<tr>
+						<td><div class="udaje">c:<sup></sup></div></td>
+						<td align="right"><input type="text" class="udaje" id="c"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="popisky"></td>
+					</tr>
+					<!--<tr>
+						<td><div class="udaje"></div></td>
+						<td align="right"><input type="text" class="udaje" id="vyska"></td>
+						<td>(cm)</td>
+					</tr>-->
+					<tr>
+						<td class="popisky"></td>
+					</tr>
+					<tr>
+						<td colspan="3" align="center"><input type="button" class="tlacitko" value="Vypočti!" onclick="bmi();"></td>
+					</tr>
+					<tr>
+						<td colspan="3" align="center"><input type="button" class="tlacitko" value="Nejede to?" onclick="presmerovani();"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<div id="blok3">
+			<table>
+				<tr></br></tr>										<!--Center v blok3-->
+				<tr id="vysledek"></tr>
+				<tr id="komentar"></tr>
+			</table>
+		</div>
+		</div>														<!--Ukončení divu blok 1; kvůli pozicování-->
+		<div id="zapati">2017 - V. D.</div>   <!--JS kvůli auto-year-->
+</body>
+</html>
